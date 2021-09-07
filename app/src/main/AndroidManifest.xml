@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kaju">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kaju">
+        <activity
+            android:name=".WalkingTrackActivity"
+            android:exported="true" />
+        <activity
+            android:name=".WaterTrackActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FoodTrackActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="true" />
         <activity
             android:name=".CalendarView"
             android:exported="true" />
