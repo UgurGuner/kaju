@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "606105932037",
+    "project_id": "kaju-3e072",
+    "storage_bucket": "kaju-3e072.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606105932037:android:2cadc18a1a9771d936e76c",
+        "android_client_info": {
+          "package_name": "com.example.kaju"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606105932037-fd8f1ek595f3q1d2cu4b5d9jeicssme2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwuOh-hvUV942NJGsSDribofVrKryu7Lo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606105932037-fd8f1ek595f3q1d2cu4b5d9jeicssme2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
