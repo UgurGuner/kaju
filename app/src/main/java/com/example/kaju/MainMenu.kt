@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.PopupMenu
 import android.widget.PopupWindow
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import com.google.firebase.auth.FirebaseAuth
 
@@ -20,6 +21,7 @@ class MainMenu : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         var currentUser = firebaseAuth.currentUser
 
+        val hello = "Hello"
         val homeScreenButton = findViewById<Button>(R.id.homeScreenButton)
         val profileIconButton = findViewById<Button>(R.id.profileButton)
         val whatsappButton = findViewById<Button>(R.id.whatsappButton)
@@ -48,6 +50,7 @@ class MainMenu : AppCompatActivity() {
 
         whatsappButton.setOnClickListener{
 
+            sendMessage(hello)
         }
         foodTrack.setOnClickListener{
             startActivity(Intent(this,FoodTrackActivity::class.java))
@@ -60,6 +63,26 @@ class MainMenu : AppCompatActivity() {
             startActivity(Intent(this,WalkingTrackActivity::class.java))
         }
 
+        plusButton.setOnClickListener{
+
+        }
+
 
     }
+    private fun sendMessage(message: String)
+    {
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type="text/plain"
+        intent.setPackage("com.whatsapp")
+        intent.putExtra(Intent.EXTRA_TEXT,message)
+        if (intent.resolveActivity(packageManager) == null) {
+            Toast.makeText(this,
+                "Please install whatsapp first.",
+                Toast.LENGTH_SHORT).show()
+            return
+        }
+        startActivity(intent)
+
+    }
+
 }
