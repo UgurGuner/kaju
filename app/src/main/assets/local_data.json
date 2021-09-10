@@ -1,0 +1,3 @@
+{"data": [{"id":1,"name":"Alkın","surname":"Çakıralar","email":"alkincakiralar@makswin.com","birthday":"January 5, 1995 at 12:00:00 AM UTC+2","cellphone":"+905357394980","gender":0,"notificationEnabled":false},
+  {"id":2,"name":"Can Atuf","surname":"Kansu","email":"canatufkansu@makswin.com","birthday":"August 24, 1987 at 12:00:00 AM UTC+3","cellphone":"+905357763366","gender":0,"notificationEnabled":false},
+  {"id":3,"name":"Ergun Uğur","surname":"Güner","email":"dadi_ugur@hotmail.com","birthday":"July 29, 1997 at 12:00:00 AM UTC+3","cellphone":"+905389606416","gender":0,"notificationEnabled":false}]}

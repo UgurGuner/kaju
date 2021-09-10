@@ -11,6 +11,7 @@ import androidx.core.text.bold
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 
 class WaterTrackActivity : AppCompatActivity() {
 
@@ -22,10 +23,21 @@ class WaterTrackActivity : AppCompatActivity() {
     private var adapter2: RecyclerView.Adapter<WaterRecyclerAdapter.ViewHolder>?=null
     private var adapter3: RecyclerView.Adapter<WaterRecyclerAdapter.ViewHolder>?=null
     private var adapter4: RecyclerView.Adapter<WaterRecyclerAdapter.ViewHolder>?=null
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_water_track)
+
+        firebaseAuth = FirebaseAuth.getInstance()
+        var currentUser = firebaseAuth.currentUser
+
+        if(currentUser==null)
+        {
+            startActivity(Intent(this,MainActivity::class.java))
+            finish()
+        }
+
         val waterTrackInfoUp = findViewById<TextView>(R.id.waterInfoUp)
         val wInfo = "Günlük tüketmen gereken su miktarı "
         val boldInfo = "3.5 litre. "
@@ -67,6 +79,19 @@ class WaterTrackActivity : AppCompatActivity() {
             sendMessage(message = "hello")
         }
 
+        val profileIconButton = findViewById<Button>(R.id.profileButton)
+        profileIconButton.setOnClickListener{
+
+            startActivity(Intent(this,ProfileActivity::class.java))
+
+        }
+
+        val homeScreenButton = findViewById<Button>(R.id.homeScreenButton)
+        homeScreenButton.setOnClickListener{
+            firebaseAuth.signOut()
+            startActivity(Intent(this,MainActivity::class.java))
+            finish()
+        }
 
 
 

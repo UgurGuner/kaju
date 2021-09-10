@@ -75,7 +75,7 @@ class EntranceActivity : AppCompatActivity() {
 
     private fun login() {
         val mobileNumber=findViewById<EditText>(R.id.phoneNumber)
-        var number=mobileNumber.text.toString().trim()
+        val number=mobileNumber.text.toString().trim()
 
         if(!number.isEmpty()){
             sendVerificationcode (number)
