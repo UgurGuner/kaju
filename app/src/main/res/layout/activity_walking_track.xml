@@ -111,9 +111,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Merhaba, Alkın 1.gün planını listeledik."
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
                     android:textColor="#FFFFFF"
-                    android:textSize="20dp" />
+                    android:textSize="17sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -133,6 +133,98 @@
             android:layout_height="match_parent"
             android:layout_weight="2.30"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1.3" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="0.7"
+                android:weightSum="6">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1.1">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/decreaseDay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/leftarrow"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/calendarButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        app:srcCompat="@mipmap/calendarimage"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.8">
+
+
+                    <TextView
+                        android:id="@+id/calendarDay"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textAlignment="textStart"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:text="1 Ocak 2020"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1.1">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/increaseDay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/rightarrow"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                </LinearLayout>
+
+            </LinearLayout>
+
 
 
         </LinearLayout>
@@ -210,7 +302,7 @@
                     <TextView
                         android:id="@+id/walkingInfoUp"
                         android:layout_width="match_parent"
-                        android:textSize="13sp"
+                        android:textSize="12sp"
                         android:textColor="@color/black"
                         android:layout_height="match_parent" />
                 </LinearLayout>
@@ -254,13 +346,13 @@
 
                             <com.mikhaellopez.circularprogressbar.CircularProgressBar
                                 android:id="@+id/circularProgressBar"
-                                android:layout_width="match_parent"
+                                android:layout_width="241dp"
                                 android:layout_height="match_parent"
                                 android:layout_alignParentStart="true"
                                 android:layout_alignParentEnd="true"
                                 android:layout_gravity="center"
-                                android:layout_marginStart="45dp"
-                                android:layout_marginEnd="43dp"
+                                android:layout_marginStart="46dp"
+                                android:layout_marginEnd="45dp"
                                 android:max="100"
                                 app:cpb_background_progressbar_color="#25CDFD"
                                 app:cpb_background_progressbar_width="20dp"
@@ -281,7 +373,6 @@
                                 android:layout_marginTop="51dp"
                                 android:layout_marginEnd="76dp"
                                 android:layout_marginBottom="96dp"
-                                android:text=""
                                 android:textAlignment="center"
                                 android:textColor="#000000"
                                 android:textSize="40sp"
@@ -289,22 +380,23 @@
 
                             <TextView
                                 android:id="@+id/circularBarCompletion"
-                                android:layout_width="133dp"
-                                android:layout_height="40dp"
+                                android:layout_width="151dp"
+                                android:layout_height="21dp"
                                 android:layout_alignParentStart="true"
                                 android:layout_alignParentTop="true"
                                 android:layout_alignParentEnd="true"
                                 android:layout_alignParentBottom="true"
                                 android:layout_marginStart="78dp"
                                 android:layout_marginTop="114dp"
-                                android:layout_marginEnd="78dp"
-                                android:layout_marginBottom="50dp"
+                                android:layout_marginEnd="73dp"
+                                android:layout_marginBottom="43dp"
                                 android:text="TAMAMLANDI"
                                 android:textAlignment="center"
                                 android:textColor="#000000"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
                         </RelativeLayout>
+
                     </LinearLayout>
 
                 </LinearLayout>
@@ -436,7 +528,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@mipmap/clinicmedical"
-                                tools:ignore="SpeakableTextPresentCheck" />
+                                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                         </LinearLayout>
 
@@ -558,10 +650,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical"
-                            android:layout_weight="0.8">
+
+                            android:layout_weight="0.6">
 
                             <androidx.appcompat.widget.AppCompatButton
                                 android:id="@+id/profileButton"
+
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@mipmap/user"
@@ -574,7 +668,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical"
-                            android:layout_weight="1.2">
+                            android:layout_weight="1.4">
 
                         </LinearLayout>
                     </LinearLayout>

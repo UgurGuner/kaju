@@ -3,12 +3,12 @@ package com.example.kaju
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.PopupMenu
-import android.widget.PopupWindow
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.widget.AppCompatButton
 import com.google.firebase.auth.FirebaseAuth
+import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainMenu : AppCompatActivity() {
 
@@ -21,6 +21,12 @@ class MainMenu : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         var currentUser = firebaseAuth.currentUser
 
+        if(currentUser==null)
+        {
+            startActivity(Intent(this,MainActivity::class.java))
+            finish()
+        }
+
         val hello = "Hello"
         val homeScreenButton = findViewById<Button>(R.id.homeScreenButton)
         val profileIconButton = findViewById<Button>(R.id.profileButton)
@@ -28,13 +34,68 @@ class MainMenu : AppCompatActivity() {
         val foodTrack = findViewById<Button>(R.id.foodTrackButton)
         val waterTrack = findViewById<Button>(R.id.waterButton)
         val walkingTrack = findViewById<Button>(R.id.walkingButton)
-        val plusButton = findViewById<Button>(R.id.plusButton)
+        val leftArrow = findViewById<AppCompatButton>(R.id.decreaseDay)
+        val rightArrow = findViewById<AppCompatButton>(R.id.increaseDay)
+        val calendarDate = findViewById<TextView>(R.id.calendarDay)
 
-        if(currentUser==null)
+        var intentComing = intent.getStringExtra("date")
+        if(!intentComing.isNullOrEmpty())
         {
-            startActivity(Intent(this,MainActivity::class.java))
-            finish()
+            calendarDate.text = intentComing
         }
+
+        leftArrow.setOnClickListener{
+
+            if(!intentComing.isNullOrEmpty())
+            {
+                calendarDate.text = intentComing
+                val simpleDate = SimpleDateFormat("dd/MM/yyyy")
+                val c = Calendar.getInstance()
+                try {
+                    c.time = simpleDate.parse(intentComing)
+
+                }
+                catch (e: Exception)
+                {
+                    e.printStackTrace()
+                }
+
+                c.add(Calendar.DATE,-1)
+                val newSimpleDate = SimpleDateFormat("dd/MM/yyyy")
+                intentComing = newSimpleDate.format(c.time)
+
+                calendarDate.text = intentComing
+            }
+
+
+        }
+
+        rightArrow.setOnClickListener{
+            if(!intentComing.isNullOrEmpty())
+            {
+                calendarDate.text = intentComing
+                val simpleDate = SimpleDateFormat("dd/MM/yyyy")
+                val c = Calendar.getInstance()
+                try {
+                    c.time = simpleDate.parse(intentComing)
+
+                }
+                catch (e: Exception)
+                {
+                    e.printStackTrace()
+                }
+
+                c.add(Calendar.DATE,1)
+                val newSimpleDate = SimpleDateFormat("dd/MM/yyyy")
+                intentComing = newSimpleDate.format(c.time)
+
+                calendarDate.text = intentComing
+            }
+
+
+        }
+
+
 
         homeScreenButton.setOnClickListener{
             firebaseAuth.signOut()
@@ -53,17 +114,41 @@ class MainMenu : AppCompatActivity() {
             sendMessage(hello)
         }
         foodTrack.setOnClickListener{
-            startActivity(Intent(this,FoodTrackActivity::class.java))
+            val newIntent = Intent(this,FoodTrackActivity::class.java)
+            newIntent.putExtra("dateMainMenu",intentComing)
+            startActivity(newIntent)
         }
         waterTrack.setOnClickListener{
-            startActivity(Intent(this,WaterTrackActivity::class.java))
+            val newIntent = Intent(this,WaterTrackActivity::class.java)
+            newIntent.putExtra("dateMainMenu",intentComing)
+            startActivity(newIntent)
         }
 
         walkingTrack.setOnClickListener{
-            startActivity(Intent(this,WalkingTrackActivity::class.java))
+            val newIntent = Intent(this,WalkingTrackActivity::class.java)
+            newIntent.putExtra("dateMainMenu",intentComing)
+            startActivity(newIntent)
         }
 
+        val plusButton = findViewById<Button>(R.id.plusButton)
         plusButton.setOnClickListener{
+            val window = PopupWindow(this)
+            val view = layoutInflater.inflate(R.layout.layout_pluspopup,null)
+            window.contentView = view
+            window.isFocusable = true
+            window.width = 1000
+            window.background
+            window.animationStyle
+            window.showAsDropDown(plusButton,-416,-350)
+
+        }
+
+        val calendarButton = findViewById<ImageView>(R.id.calendarButton)
+        calendarButton.setOnClickListener{
+            val className = "MainMenu::class.java"
+            val intent = Intent(this,CalendarView::class.java)
+            intent.putExtra("className",className)
+            startActivity(intent)
 
         }
 

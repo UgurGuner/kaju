@@ -272,11 +272,10 @@
             <TextView
                 android:layout_gravity="center"
                 android:id="@+id/birthdate"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:textColor="@color/black"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 android:layout_marginBottom="5dp"/>
           </LinearLayout>
           <LinearLayout
@@ -311,10 +310,9 @@
             <TextView
                 android:layout_gravity="center"
                 android:id="@+id/gender"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 android:textColor="@color/black"
                 android:layout_marginBottom="5dp" />
           </LinearLayout>
@@ -627,7 +625,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="1.1">
 
         </LinearLayout>
 
@@ -635,7 +633,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_weight="1"
+            android:layout_weight="0.9"
             android:weightSum="4.4">
 
           <LinearLayout
@@ -684,12 +682,14 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="horizontal"
+              android:layout_marginBottom="25dp"
               android:layout_weight="0.9">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/whatsappButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:background="@mipmap/whatsappicon"
                 tools:ignore="SpeakableTextPresentCheck" />
 

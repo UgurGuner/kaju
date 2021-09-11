@@ -4,12 +4,15 @@ import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.Person
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.SpannableStringBuilder
 import android.util.Log
 import android.widget.*
@@ -45,6 +48,8 @@ class ProfileActivity : AppCompatActivity() {
     private val Channel_ID = "Your_Channel_ID"
     private val birthdate = "Doğum Tarihi: "
     private val sex = "Cinsiyet: "
+    val REQUEST_IMAGE_CAPTURE = 1
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -134,7 +139,7 @@ class ProfileActivity : AppCompatActivity() {
 
         yellowProfileButton.setOnClickListener{
 
-            checkForPermission(Manifest.permission.CAMERA,cameraPerm)
+            checkForPermissionCamera(Manifest.permission.CAMERA,cameraPerm)
             createNotification()
             val notificationLayout = RemoteViews(packageName,R.layout.custom_notification)
             val builder = NotificationCompat.Builder(this,Channel_ID)
@@ -222,6 +227,21 @@ class ProfileActivity : AppCompatActivity() {
         {
             //Toast.makeText(this@ProfileActivity,"Permission Granted Already",Toast.LENGTH_LONG).show()
             updateEnableNotifications("7",true)
+        }
+
+
+    }
+    private fun checkForPermissionCamera(permission: String, requestCode: Int)
+    {
+        if(ContextCompat.checkSelfPermission(this@ProfileActivity,permission) == PackageManager.PERMISSION_DENIED)
+        {
+            ActivityCompat.requestPermissions(this@ProfileActivity, arrayOf(permission),requestCode)
+
+        }
+        else
+        {
+            dispatchTakePictureIntent()
+            //Toast.makeText(this@ProfileActivity,"Permission Granted Already",Toast.LENGTH_LONG).show()
         }
 
 
@@ -361,5 +381,25 @@ class ProfileActivity : AppCompatActivity() {
     }
 
 
+    private fun dispatchTakePictureIntent() {
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        try {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+
+        } catch (e: ActivityNotFoundException) {
+            e.printStackTrace()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val yellowProfileButton = findViewById<ImageView>(R.id.yellowProfileButton)
+        if(requestCode == REQUEST_IMAGE_CAPTURE)
+        {
+            val image = data?.extras?.get("data") as Bitmap
+            yellowProfileButton.setImageBitmap(image)
+
+        }
+    }
 
 }

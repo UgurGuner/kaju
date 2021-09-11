@@ -111,9 +111,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Merhaba, Alkın 1.gün planını listeledik."
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
                     android:textColor="#FFFFFF"
-                    android:textSize="20dp" />
+                    android:textSize="17sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -123,6 +123,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.5"
+        android:id="@+id/foodTrackerMain"
+        android:clickable="true"
+        android:focusable="true"
         android:weightSum="10"
         android:background="@mipmap/whitebackground"
         android:orientation="vertical">
@@ -132,9 +135,100 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2.30"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1.3" />
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="0.7"
+                android:weightSum="6">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1.1">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/decreaseDay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/leftarrow"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/calendarButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        app:srcCompat="@mipmap/calendarimage"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.8">
+
+
+                    <TextView
+                        android:id="@+id/calendarDay"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textAlignment="textStart"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:text="1 Ocak 2020"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1.1">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/increaseDay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/rightarrow"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                </LinearLayout>
+
+
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -223,6 +317,88 @@
             android:layout_weight="2.2"
             android:orientation="horizontal"
             android:weightSum="3">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1.3">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/upssLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:background="@mipmap/upps"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                tools:ignore="TouchTargetSizeCheck"
+                android:focusable="true">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:id="@+id/sadCryImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="30dp"
+                        android:background="@mipmap/sadcry" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="UPPS!"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/openPopUp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="40dp"
+                        android:background="@mipmap/belowwhitearrow"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1.3">
+
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -283,7 +459,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@mipmap/clinicmedical"
-                                tools:ignore="SpeakableTextPresentCheck" />
+                                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                         </LinearLayout>
 
@@ -405,7 +581,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical"
-                            android:layout_weight="0.8">
+                            android:layout_weight="0.6">
 
                             <androidx.appcompat.widget.AppCompatButton
                                 android:id="@+id/profileButton"
@@ -421,7 +597,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical"
-                            android:layout_weight="1.2">
+                            android:layout_weight="1.4">
 
                         </LinearLayout>
                     </LinearLayout>

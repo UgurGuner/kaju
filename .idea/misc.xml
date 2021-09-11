@@ -10,7 +10,7 @@
         <entry key="..\:/Users/UGUR/AndroidStudioProjects/Kaju/app/src/main/res/drawable/shape_circular_progress.xml" value="0.3223684210526316" />
         <entry key="..\:/Users/UGUR/AndroidStudioProjects/Kaju/app/src/main/res/layout/activity_calendar_view.xml" value="0.23684210526315788" />
         <entry key="..\:/Users/UGUR/AndroidStudioProjects/Kaju/app/src/main/res/layout/activity_entrance.xml" value="0.25" />
-        <entry key="..\:/Users/UGUR/AndroidStudioProjects/Kaju/app/src/main/res/layout/activity_food_track.xml" value="0.3087719298245614" />
+        <entry key="..\:/Users/UGUR/AndroidStudioProjects/Kaju/app/src/main/res/layout/activity_food_track.xml" value="0.33" />
         <entry key="..\:/Users/UGUR/AndroidStudioProjects/Kaju/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/UGUR/AndroidStudioProjects/Kaju/app/src/main/res/layout/activity_main_menu.xml" value="0.33" />
         <entry key="..\:/Users/UGUR/AndroidStudioProjects/Kaju/app/src/main/res/layout/activity_profile.xml" value="0.3087719298245614" />
@@ -19,6 +19,8 @@
         <entry key="..\:/Users/UGUR/AndroidStudioProjects/Kaju/app/src/main/res/layout/activity_water_track.xml" value="0.3087719298245614" />
         <entry key="..\:/Users/UGUR/AndroidStudioProjects/Kaju/app/src/main/res/layout/card_layout.xml" value="0.3087719298245614" />
         <entry key="..\:/Users/UGUR/AndroidStudioProjects/Kaju/app/src/main/res/layout/custom_notification.xml" value="0.3087719298245614" />
+        <entry key="..\:/Users/UGUR/AndroidStudioProjects/Kaju/app/src/main/res/layout/layout_pluspopup.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/UGUR/AndroidStudioProjects/Kaju/app/src/main/res/layout/layout_popup.xml" value="0.23157894736842105" />
         <entry key="..\:/Users/UGUR/AndroidStudioProjects/Kaju/app/src/main/res/layout/watercard_layout.xml" value="0.67" />
         <entry key="..\:/Users/UGUR/AndroidStudioProjects/Kaju/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3828125" />
         <entry key="..\:/Users/UGUR/AndroidStudioProjects/Kaju/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3828125" />
