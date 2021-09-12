@@ -22,65 +22,61 @@ class CalendarView : AppCompatActivity() {
                if(day<10)
                {
                    val selectedDate ="0" + day + "/0" + (month+1) + "/" + year
-                   if(intentComing.equals("MainMenu::class.java"))
-                   {
-                       val intent = Intent(this,MainMenu::class.java)
-                       intent.putExtra("date",selectedDate)
-                       startActivity(intent)
-                       finish()
-                   }
-                   else if (intentComing.equals("WalkingTrackActivity::class.java"))
-                   {
-                       val intent = Intent(this,WalkingTrackActivity::class.java)
-                       intent.putExtra("date",selectedDate)
-                       startActivity(intent)
-                       finish()
-                   }
-                   else if (intentComing.equals("WaterTrackActivity::class.java"))
-                   {
-                       val intent = Intent(this,WaterTrackActivity::class.java)
-                       intent.putExtra("date",selectedDate)
-                       startActivity(intent)
-                       finish()
-                   }
-                   else if (intentComing.equals("FoodTrackActivity::class.java"))
-                   {
-                       val intent = Intent(this,FoodTrackActivity::class.java)
-                       intent.putExtra("date",selectedDate)
-                       startActivity(intent)
-                       finish()
+                   when {
+                       intentComing.equals("MainMenu::class.java") -> {
+                           val intent = Intent(this,MainMenu::class.java)
+                           intent.putExtra("date",selectedDate)
+                           startActivity(intent)
+                           finish()
+                       }
+                       intentComing.equals("WalkingTrackActivity::class.java") -> {
+                           val intent = Intent(this,WalkingTrackActivity::class.java)
+                           intent.putExtra("date",selectedDate)
+                           startActivity(intent)
+                           finish()
+                       }
+                       intentComing.equals("WaterTrackActivity::class.java") -> {
+                           val intent = Intent(this,WaterTrackActivity::class.java)
+                           intent.putExtra("date",selectedDate)
+                           startActivity(intent)
+                           finish()
+                       }
+                       intentComing.equals("FoodTrackActivity::class.java") -> {
+                           val intent = Intent(this,FoodTrackActivity::class.java)
+                           intent.putExtra("date",selectedDate)
+                           startActivity(intent)
+                           finish()
+                       }
                    }
                }
                else
                {
                    val selectedDate ="" + day + "/0" + (month+1) + "/" + year
-                   if(intentComing.equals("MainMenu::class.java"))
-                   {
-                       val intent = Intent(this,MainMenu::class.java)
-                       intent.putExtra("date",selectedDate)
-                       startActivity(intent)
-                       finish()
-                   }
-                   else if (intentComing.equals("WalkingTrackActivity::class.java"))
-                   {
-                       val intent = Intent(this,WalkingTrackActivity::class.java)
-                       intent.putExtra("date",selectedDate)
-                       startActivity(intent)
-                       finish()
-                   }
-                   else if (intentComing.equals("WaterTrackActivity::class.java"))
-                   {
-                       val intent = Intent(this,WaterTrackActivity::class.java)
-                       intent.putExtra("date",selectedDate)
-                       startActivity(intent)
-                       finish()
-                   }
-                   else if (intentComing.equals("FoodTrackActivity::class.java"))
-                   {
-                       val intent = Intent(this,FoodTrackActivity::class.java)
-                       intent.putExtra("date",selectedDate)
-                       startActivity(intent)
-                       finish()
+                   when {
+                       intentComing.equals("MainMenu::class.java") -> {
+                           val intent = Intent(this,MainMenu::class.java)
+                           intent.putExtra("date",selectedDate)
+                           startActivity(intent)
+                           finish()
+                       }
+                       intentComing.equals("WalkingTrackActivity::class.java") -> {
+                           val intent = Intent(this,WalkingTrackActivity::class.java)
+                           intent.putExtra("date",selectedDate)
+                           startActivity(intent)
+                           finish()
+                       }
+                       intentComing.equals("WaterTrackActivity::class.java") -> {
+                           val intent = Intent(this,WaterTrackActivity::class.java)
+                           intent.putExtra("date",selectedDate)
+                           startActivity(intent)
+                           finish()
+                       }
+                       intentComing.equals("FoodTrackActivity::class.java") -> {
+                           val intent = Intent(this,FoodTrackActivity::class.java)
+                           intent.putExtra("date",selectedDate)
+                           startActivity(intent)
+                           finish()
+                       }
                    }
                }
            }
@@ -89,65 +85,61 @@ class CalendarView : AppCompatActivity() {
                if(day<10)
                {
                    val selectedDate ="0" + day + "/0" + (month+1) + "/" + year
-                   if(intentComing.equals("MainMenu::class.java"))
-                   {
-                       val intent = Intent(this,MainMenu::class.java)
-                       intent.putExtra("date",selectedDate)
-                       startActivity(intent)
-                       finish()
-                   }
-                   else if (intentComing.equals("WalkingTrackActivity::class.java"))
-                   {
-                       val intent = Intent(this,WalkingTrackActivity::class.java)
-                       intent.putExtra("date",selectedDate)
-                       startActivity(intent)
-                       finish()
-                   }
-                   else if (intentComing.equals("WaterTrackActivity::class.java"))
-                   {
-                       val intent = Intent(this,WaterTrackActivity::class.java)
-                       intent.putExtra("date",selectedDate)
-                       startActivity(intent)
-                       finish()
-                   }
-                   else if (intentComing.equals("FoodTrackActivity::class.java"))
-                   {
-                       val intent = Intent(this,FoodTrackActivity::class.java)
-                       intent.putExtra("date",selectedDate)
-                       startActivity(intent)
-                       finish()
+                   when {
+                       intentComing.equals("MainMenu::class.java") -> {
+                           val intent = Intent(this,MainMenu::class.java)
+                           intent.putExtra("date",selectedDate)
+                           startActivity(intent)
+                           finish()
+                       }
+                       intentComing.equals("WalkingTrackActivity::class.java") -> {
+                           val intent = Intent(this,WalkingTrackActivity::class.java)
+                           intent.putExtra("date",selectedDate)
+                           startActivity(intent)
+                           finish()
+                       }
+                       intentComing.equals("WaterTrackActivity::class.java") -> {
+                           val intent = Intent(this,WaterTrackActivity::class.java)
+                           intent.putExtra("date",selectedDate)
+                           startActivity(intent)
+                           finish()
+                       }
+                       intentComing.equals("FoodTrackActivity::class.java") -> {
+                           val intent = Intent(this,FoodTrackActivity::class.java)
+                           intent.putExtra("date",selectedDate)
+                           startActivity(intent)
+                           finish()
+                       }
                    }
                }
                else
                {
                    val selectedDate ="" + day + "/0" + (month+1) + "/" + year
-                   if(intentComing.equals("MainMenu::class.java"))
-                   {
-                       val intent = Intent(this,MainMenu::class.java)
-                       intent.putExtra("date",selectedDate)
-                       startActivity(intent)
-                       finish()
-                   }
-                   else if (intentComing.equals("WalkingTrackActivity::class.java"))
-                   {
-                       val intent = Intent(this,WalkingTrackActivity::class.java)
-                       intent.putExtra("date",selectedDate)
-                       startActivity(intent)
-                       finish()
-                   }
-                   else if (intentComing.equals("WaterTrackActivity::class.java"))
-                   {
-                       val intent = Intent(this,WaterTrackActivity::class.java)
-                       intent.putExtra("date",selectedDate)
-                       startActivity(intent)
-                       finish()
-                   }
-                   else if (intentComing.equals("FoodTrackActivity::class.java"))
-                   {
-                       val intent = Intent(this,FoodTrackActivity::class.java)
-                       intent.putExtra("date",selectedDate)
-                       startActivity(intent)
-                       finish()
+                   when {
+                       intentComing.equals("MainMenu::class.java") -> {
+                           val intent = Intent(this,MainMenu::class.java)
+                           intent.putExtra("date",selectedDate)
+                           startActivity(intent)
+                           finish()
+                       }
+                       intentComing.equals("WalkingTrackActivity::class.java") -> {
+                           val intent = Intent(this,WalkingTrackActivity::class.java)
+                           intent.putExtra("date",selectedDate)
+                           startActivity(intent)
+                           finish()
+                       }
+                       intentComing.equals("WaterTrackActivity::class.java") -> {
+                           val intent = Intent(this,WaterTrackActivity::class.java)
+                           intent.putExtra("date",selectedDate)
+                           startActivity(intent)
+                           finish()
+                       }
+                       intentComing.equals("FoodTrackActivity::class.java") -> {
+                           val intent = Intent(this,FoodTrackActivity::class.java)
+                           intent.putExtra("date",selectedDate)
+                           startActivity(intent)
+                           finish()
+                       }
                    }
                }
            }

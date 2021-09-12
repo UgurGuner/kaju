@@ -1,6 +1,7 @@
 package com.example.kaju
 
 import android.Manifest
+import android.R.attr
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.Person
@@ -35,9 +36,19 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import org.json.JSONException
 import org.json.JSONObject
+import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.lang.StringBuilder
 import java.nio.charset.Charset
+import android.R.attr.data
+
+import android.net.Uri
+import android.util.Base64
+import android.graphics.BitmapFactory
+
+
+
+
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -67,9 +78,13 @@ class ProfileActivity : AppCompatActivity() {
         val birthdayText = findViewById<TextView>(R.id.birthdate)
         val genderText = findViewById<TextView>(R.id.gender)
 
+
         firebaseAuth = FirebaseAuth.getInstance()
         val currentUser = firebaseAuth.currentUser
         val currentUserPhoneNumber = currentUser?.phoneNumber
+
+
+
 
         retrieveUsers()
 
@@ -177,6 +192,8 @@ class ProfileActivity : AppCompatActivity() {
             finish()
             startActivity(intent)
         }
+
+
 
     }
 
@@ -398,6 +415,26 @@ class ProfileActivity : AppCompatActivity() {
         {
             val image = data?.extras?.get("data") as Bitmap
             yellowProfileButton.setImageBitmap(image)
+            try {
+                val byteArrayOutputStream = ByteArrayOutputStream()
+                image.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream)
+                val bytes: ByteArray = byteArrayOutputStream.toByteArray()
+                val sImage = Base64.encodeToString(bytes,Base64.DEFAULT)
+                val sharedPreferences = getSharedPreferences("sharedPreferences",Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+
+                editor.apply{
+                    putString("STRING_KEY",sImage)
+                }.apply()
+
+
+
+            }
+            catch (e: IOException)
+            {
+                e.printStackTrace()
+            }
+
 
         }
     }

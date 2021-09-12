@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        var runnable = Runnable {
+        val runnable = Runnable {
             val intent = Intent(this, EntranceActivity::class.java)
             val options = ActivityOptions.makeSceneTransitionAnimation(this,app_name,ViewCompat.getTransitionName(app_name))
             startActivity(intent,options.toBundle())

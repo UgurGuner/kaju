@@ -5,7 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.widget.AppCompatButton
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.analytics.ktx.logEvent
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
@@ -13,13 +17,18 @@ import java.util.*
 class MainMenu : AppCompatActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_menu)
 
+        firebaseAnalytics = Firebase.analytics
         firebaseAuth = FirebaseAuth.getInstance()
-        var currentUser = firebaseAuth.currentUser
+        val currentUser = firebaseAuth.currentUser
+
+
+
 
         if(currentUser==null)
         {
@@ -150,6 +159,11 @@ class MainMenu : AppCompatActivity() {
             intent.putExtra("className",className)
             startActivity(intent)
 
+        }
+
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
+            param(FirebaseAnalytics.Param.ITEM_NAME, intentComing.toString())
+            param(FirebaseAnalytics.Param.CONTENT_TYPE, "image")
         }
 
 
