@@ -15,7 +15,7 @@ class CalendarView : AppCompatActivity() {
         val intentComing = intent.getStringExtra("className")
 
 
-        calendarView?.setOnDateChangeListener{calendarView, year,month,day ->
+        calendarView?.setOnDateChangeListener{ _, year, month, day ->
 
            if(month<10)
            {

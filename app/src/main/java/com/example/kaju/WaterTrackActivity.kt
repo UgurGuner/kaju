@@ -198,8 +198,7 @@ class WaterTrackActivity : AppCompatActivity() {
 
         val homeScreenButton = findViewById<Button>(R.id.homeScreenButton)
         homeScreenButton.setOnClickListener{
-            firebaseAuth.signOut()
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this,MainMenu::class.java))
             finish()
         }
 

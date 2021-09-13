@@ -41,13 +41,21 @@ import java.io.IOException
 import java.lang.StringBuilder
 import java.nio.charset.Charset
 import android.R.attr.data
+import android.app.ProgressDialog
+import android.content.SharedPreferences
 
 import android.net.Uri
 import android.util.Base64
 import android.graphics.BitmapFactory
-
-
-
+import android.view.ViewGroup
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
+import java.io.File
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class ProfileActivity : AppCompatActivity() {
@@ -56,6 +64,8 @@ class ProfileActivity : AppCompatActivity() {
     private val db = Firebase.firestore
     private val notificationPerm = 101
     private val cameraPerm = 102
+    private val storagePermRead = 103
+    private val storagePermWrite = 104
     private val Channel_ID = "Your_Channel_ID"
     private val birthdate = "Doğum Tarihi: "
     private val sex = "Cinsiyet: "
@@ -66,6 +76,7 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
         val textDailyPlan = findViewById<TextView>(R.id.textDailyPlan)
+        val plusButton = findViewById<AppCompatButton>(R.id.plusButton)
         val profileIcon = findViewById<ImageView>(R.id.profileIcon)
         val yellowProfileButton = findViewById<ImageView>(R.id.yellowProfileButton)
         val notsOff = findViewById<AppCompatButton>(R.id.notificationsOff)
@@ -78,6 +89,18 @@ class ProfileActivity : AppCompatActivity() {
         val birthdayText = findViewById<TextView>(R.id.birthdate)
         val genderText = findViewById<TextView>(R.id.gender)
 
+        val f = File(
+            "/data/data/com.example.kaju/shared_prefs/sharedPreferences.xml"
+        )
+       if(f.exists())
+       {
+           val prefs = getSharedPreferences("sharedPreferences",Context.MODE_PRIVATE)
+           val img = prefs.getString("STRING_KEY","")
+           val imageBytes = Base64.decode(img,Base64.DEFAULT)
+           val decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+           profileIcon.setImageBitmap(decodedImage)
+           yellowProfileButton.setImageBitmap(decodedImage)
+       }
 
         firebaseAuth = FirebaseAuth.getInstance()
         val currentUser = firebaseAuth.currentUser
@@ -155,6 +178,8 @@ class ProfileActivity : AppCompatActivity() {
         yellowProfileButton.setOnClickListener{
 
             checkForPermissionCamera(Manifest.permission.CAMERA,cameraPerm)
+            checkForPermissionStorage(Manifest.permission.READ_EXTERNAL_STORAGE,storagePermRead)
+            checkForPermissionStorage(Manifest.permission.WRITE_EXTERNAL_STORAGE,storagePermWrite)
             createNotification()
             val notificationLayout = RemoteViews(packageName,R.layout.custom_notification)
             val builder = NotificationCompat.Builder(this,Channel_ID)
@@ -179,6 +204,13 @@ class ProfileActivity : AppCompatActivity() {
 
 
         homeScreenButton.setOnClickListener{
+
+            startActivity(Intent(this,MainMenu::class.java))
+            finish()
+        }
+
+        val signOut = findViewById<AppCompatButton>(R.id.signOut)
+        signOut.setOnClickListener{
             firebaseAuth.signOut()
             startActivity(Intent(this,MainActivity::class.java))
             finish()
@@ -191,6 +223,21 @@ class ProfileActivity : AppCompatActivity() {
         refreshPage.setOnClickListener{
             finish()
             startActivity(intent)
+        }
+
+        plusButton.setOnClickListener{
+            val plusButton = findViewById<Button>(R.id.plusButton)
+            plusButton.setOnClickListener{
+                val window = PopupWindow(this)
+                val view = layoutInflater.inflate(R.layout.layout_pluspopup,null)
+                window.contentView = view
+                window.isFocusable = true
+                window.width = 1000
+                window.background
+                window.animationStyle
+                window.showAsDropDown(plusButton,-416,-350)
+
+            }
         }
 
 
@@ -233,6 +280,23 @@ class ProfileActivity : AppCompatActivity() {
         startActivity(intent)
 
     }
+
+    private fun checkForPermissionStorage(permission: String, requestCode: Int)
+    {
+        if(ContextCompat.checkSelfPermission(this@ProfileActivity,permission) == PackageManager.PERMISSION_DENIED)
+        {
+            ActivityCompat.requestPermissions(this@ProfileActivity, arrayOf(permission),requestCode)
+
+        }
+        else
+        {
+            //Toast.makeText(this@ProfileActivity,"Permission Granted Already",Toast.LENGTH_LONG).show()
+
+        }
+
+
+    }
+
     private fun checkForPermission(permission: String, requestCode: Int)
     {
         if(ContextCompat.checkSelfPermission(this@ProfileActivity,permission) == PackageManager.PERMISSION_DENIED)
@@ -413,6 +477,10 @@ class ProfileActivity : AppCompatActivity() {
         val yellowProfileButton = findViewById<ImageView>(R.id.yellowProfileButton)
         if(requestCode == REQUEST_IMAGE_CAPTURE)
         {
+
+
+            val currentUser = firebaseAuth.currentUser
+            val currentUserPhoneNumber = currentUser?.phoneNumber
             val image = data?.extras?.get("data") as Bitmap
             yellowProfileButton.setImageBitmap(image)
             try {
@@ -426,6 +494,14 @@ class ProfileActivity : AppCompatActivity() {
                 editor.apply{
                     putString("STRING_KEY",sImage)
                 }.apply()
+
+                val progressDialog = ProgressDialog(this)
+                progressDialog.setMessage("Uploading file...")
+                progressDialog.setCancelable(false)
+                progressDialog.show()
+                val storageRef = FirebaseStorage.getInstance().getReference("/data/data/com.example.kaju/shared_prefs/The profile picure of the user$currentUserPhoneNumber")
+                storageRef.putBytes(bytes)
+                progressDialog.dismiss()
 
 
 
